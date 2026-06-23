@@ -26,6 +26,116 @@
   input { font-family: inherit; }
   ::-webkit-scrollbar { width: 0; height: 0; }
 </style>
+<script>
+/* HIIT Timer: 引っ張って更新 + 更新検知バナー
+   GitHub Pages / iOS standalone でキャッシュにより新デプロイが届かない問題への対策。
+   DC アプリ本体とは独立した素の JS。running 画面では引っ張り更新を無効化する。
+   ※ index.html(本番ビルド)のローダー直後にも同一スクリプトを設置済み。
+     ビルドを作り直す際はこちらが本番へ反映される。 */
+(function () {
+  if (window.__hiitRefreshInit) return;
+  window.__hiitRefreshInit = true;
+
+  // キャッシュ貫通リロード(?v= を付け別URL扱いにして最新を取り直す)
+  function hardReload() {
+    try {
+      var u = new URL(location.href);
+      u.searchParams.set('v', Date.now().toString());
+      location.replace(u.toString());
+    } catch (e) {
+      location.reload();
+    }
+  }
+
+  // タイマー動作中か(running 画面のみに存在するリングSVGで判定)
+  function isRunning() {
+    return !!document.querySelector('svg[viewBox="0 0 320 320"]');
+  }
+
+  // タッチ対象の最も近いスクロール可能祖先
+  function scrollableAncestor(el) {
+    while (el && el.nodeType === 1 && el !== document.body) {
+      var oy = getComputedStyle(el).overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight) return el;
+      el = el.parentElement;
+    }
+    return document.scrollingElement || document.documentElement;
+  }
+
+  // ===== ① 引っ張って更新 =====
+  var THRESHOLD = 90;
+  var startY = 0, dy = 0, tracking = false, container = null;
+  var ind = document.createElement('div');
+  ind.style.cssText = 'position:fixed;top:0;left:0;right:0;display:flex;align-items:center;' +
+    'justify-content:center;height:0;overflow:hidden;font:600 14px/1 -apple-system,sans-serif;' +
+    'color:#F2683C;background:#FBFBF9;z-index:99998;transition:height .18s,opacity .18s;' +
+    'opacity:0;pointer-events:none;';
+  function mountInd() { if (!ind.parentNode && document.body) document.body.appendChild(ind); }
+
+  document.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1 || isRunning()) { tracking = false; return; }
+    container = scrollableAncestor(e.target);
+    if (container.scrollTop > 0) { tracking = false; return; }
+    startY = e.touches[0].clientY; dy = 0; tracking = true;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function (e) {
+    if (!tracking) return;
+    dy = e.touches[0].clientY - startY;
+    if (dy <= 0 || (container && container.scrollTop > 0)) {
+      tracking = dy > 0 ? tracking : false;
+      ind.style.height = '0'; ind.style.opacity = '0';
+      return;
+    }
+    mountInd();
+    ind.style.transition = 'none';
+    ind.style.height = Math.min(dy * 0.5, 70) + 'px';
+    ind.style.opacity = '1';
+    ind.textContent = dy >= THRESHOLD ? '離して更新 ↑' : '引っ張って更新 ↓';
+    if (dy > 8) e.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener('touchend', function () {
+    if (!tracking) return;
+    tracking = false;
+    var fire = dy >= THRESHOLD;
+    ind.style.transition = 'height .18s,opacity .18s';
+    ind.style.height = '0'; ind.style.opacity = '0';
+    if (fire) hardReload();
+  }, { passive: true });
+
+  // ===== ② 更新検知バナー =====
+  var bootVer = null, banner = null;
+  function fetchVer() {
+    return fetch(location.pathname + '?_hv=' + Date.now(), { method: 'HEAD', cache: 'no-store' })
+      .then(function (r) { return r.headers.get('etag') || r.headers.get('last-modified') || ''; })
+      .catch(function () { return null; });
+  }
+  function showBanner() {
+    if (banner) return;
+    banner = document.createElement('div');
+    banner.textContent = '新しいバージョンがあります — タップで更新';
+    banner.style.cssText = 'position:fixed;left:12px;right:12px;top:max(12px,env(safe-area-inset-top));' +
+      'padding:12px 16px;border-radius:14px;background:#F2683C;color:#fff;' +
+      'font:700 14px/1.3 -apple-system,sans-serif;text-align:center;z-index:99999;' +
+      'box-shadow:0 6px 20px rgba(242,104,60,.35);cursor:pointer;';
+    banner.addEventListener('click', hardReload);
+    document.body.appendChild(banner);
+  }
+  function checkVersion() {
+    fetchVer().then(function (v) {
+      if (!v) return;
+      if (bootVer === null) { bootVer = v; return; }
+      if (v !== bootVer) showBanner();
+    });
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') checkVersion();
+  });
+  if (document.readyState === 'complete') checkVersion();
+  else window.addEventListener('load', checkVersion);
+})();
+</script>
 </helmet>
 
 <div style="width:390px;height:844px;margin:0 auto;background:#FBFBF9;position:relative;overflow:hidden;color:#191815;border-radius:0;">
@@ -176,7 +286,7 @@
 class Component extends DCLogic {
   state = {
     screen: 'setup',
-    workTime: 30, restTime: 15, prepTime: 10, sets: 1,
+    workTime: 20, restTime: 10, prepTime: 10, sets: 1,
     exercises: ['腕立て', '腕立て(脇締め)', 'スクワット', '片足スクワット', '片足スクワットツイスト', 'バックランジ', 'バックランジニーアップ', 'マウンテンクライマー', 'マウンテンクライマー(ツイスト)', 'バービー', 'ニーアップ'],
     seq: [], idx: 0, secondsLeft: 0, paused: false,
   };
