@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<rect width="200" height="200" fill="#F2683C" rx="24"/>
+<circle cx="100" cy="92" r="48" fill="none" stroke="#fff" stroke-width="7" opacity="0.3"/>
+<circle cx="100" cy="92" r="48" fill="none" stroke="#fff" stroke-width="7" stroke-dasharray="301" stroke-dashoffset="90" transform="rotate(-90 100 92)"/>
+<text x="100" y="104" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="36" fill="#fff">18</text>
+<text x="100" y="164" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#fff" opacity="0.85">HIIT</text>
+</svg>
+</template>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ECEAE5; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
+  input { font-family: inherit; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+</style>
+</helmet>
+
+<div style="width:390px;height:844px;margin:0 auto;background:#FBFBF9;position:relative;overflow:hidden;color:#191815;border-radius:0;">
+
+  <sc-if value="{{ isSetup }}" hint-placeholder-val="{{ true }}">
+  <div style="height:844px;overflow-y:auto;display:flex;flex-direction:column;">
+
+    <div style="padding:56px 28px 20px;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;letter-spacing:-0.5px;line-height:1;">HIIT Timer</div>
+      <div style="margin-top:8px;color:#8A8780;font-size:14px;font-weight:500;">インターバルトレーニング</div>
+    </div>
+
+    <div style="padding:8px 20px 0;display:flex;flex-direction:column;gap:2px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:#A8A49C;padding:0 8px 10px;">タイマー設定</div>
+
+      <div style="background:#FFFFFF;border-radius:20px;border:1px solid #EFEDE8;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #F1EFEA;">
+          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#F2683C;"></span><span style="font-size:16px;font-weight:700;">運動時間</span></div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <button onClick="{{ decWork }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ workTime }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">秒</span></div>
+            <button onClick="{{ incWork }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #F1EFEA;">
+          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#2FA8C0;"></span><span style="font-size:16px;font-weight:700;">休憩時間</span></div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <button onClick="{{ decRest }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ restTime }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">秒</span></div>
+            <button onClick="{{ incRest }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #F1EFEA;">
+          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#E8A53A;"></span><span style="font-size:16px;font-weight:700;">準備時間</span></div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <button onClick="{{ decPrep }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ prepTime }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">秒</span></div>
+            <button onClick="{{ incPrep }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;">
+          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#191815;"></span><span style="font-size:16px;font-weight:700;">セット数</span></div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <button onClick="{{ decSets }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ sets }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">回</span></div>
+            <button onClick="{{ incSets }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:24px 20px 0;display:flex;flex-direction:column;gap:2px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 8px 10px;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:#A8A49C;">メニュー</div>
+        <button onClick="{{ addExercise }}" style="border:none;background:none;color:#F2683C;font-size:14px;font-weight:700;cursor:pointer;padding:0;">＋ 追加</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <sc-for list="{{ exerciseRows }}" as="row" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #EFEDE8;border-radius:14px;padding:6px 8px 6px 14px;">
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:#C4C0B7;min-width:18px;">{{ row.num }}</span>
+            <input value="{{ row.name }}" onChange="{{ row.onInput }}" style="flex:1;border:none;outline:none;background:none;font-size:15px;font-weight:500;color:#191815;padding:8px 0;" />
+            <button onClick="{{ row.onRemove }}" style="width:34px;height:34px;border-radius:10px;border:none;background:#F8F6F1;color:#B6B2A9;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">×</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="height:24px;flex:1;"></div>
+
+    <div style="position:sticky;bottom:0;padding:16px 20px 28px;background:linear-gradient(to top,#FBFBF9 70%,rgba(251,251,249,0));">
+      <button onClick="{{ start }}" style="width:100%;border:none;border-radius:18px;background:#F2683C;color:#fff;padding:19px;font-size:18px;font-weight:700;font-family:'Noto Sans JP';cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 22px rgba(242,104,60,0.32);">
+        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="#fff"></polygon></svg>
+        スタート<span style="opacity:0.7;font-weight:500;font-size:14px;">・ {{ estLabel }}</span>
+      </button>
+    </div>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isRunning }}">
+  <div style="height:844px;display:flex;flex-direction:column;background:{{ bgTint }};transition:background 0.4s;">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:54px 24px 0;">
+      <button onClick="{{ stop }}" style="width:40px;height:40px;border-radius:12px;border:none;background:rgba(255,255,255,0.7);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" stroke="#5A574F" stroke-width="2.4" stroke-linecap="round"></path></svg>
+      </button>
+      <div style="padding:8px 18px;border-radius:999px;background:{{ phaseColor }};color:#fff;font-size:15px;font-weight:700;letter-spacing:0.04em;">{{ phaseLabel }}</div>
+      <div style="min-width:40px;text-align:right;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:#8A8780;">{{ progressLabel }}</div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0 24px;">
+      <div style="font-size:30px;font-weight:900;text-align:center;line-height:1.15;max-width:330px;">{{ currentName }}</div>
+
+      <div style="position:relative;width:300px;height:300px;">
+        <svg width="300" height="300" viewBox="0 0 320 320" style="display:block;">
+          <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="14"></circle>
+          <circle cx="160" cy="160" r="140" fill="none" stroke="{{ phaseColor }}" stroke-width="14" stroke-linecap="round" stroke-dasharray="{{ ringCirc }}" stroke-dashoffset="{{ ringOffset }}" transform="rotate(-90 160 160)"></circle>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:96px;line-height:1;color:{{ phaseColor }};letter-spacing:-2px;">{{ displayTime }}</div>
+        </div>
+      </div>
+
+      <div style="font-size:15px;font-weight:500;color:#8A8780;text-align:center;min-height:22px;">{{ nextLabel }}</div>
+    </div>
+
+    <div style="display:flex;gap:6px;padding:0 24px 16px;">
+      <sc-for list="{{ stepBarItems }}" as="step" hint-placeholder-count="4">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;">
+          <div style="width:100%;height:6px;border-radius:3px;background:{{ step.trackBg }};overflow:hidden;">
+            <div style="height:100%;border-radius:3px;background:{{ step.fillBg }};width:{{ step.fillWidth }};transition:width 0.3s;"></div>
+          </div>
+          <div style="font-size:10px;font-weight:{{ step.fontWeight }};color:{{ step.labelColor }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;text-align:center;">{{ step.name }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;justify-content:center;gap:28px;padding:0 24px 48px;">
+      <button onClick="{{ prevStep }}" style="width:58px;height:58px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="18,5 9,12 18,19" fill="#3A382F"></polygon><rect x="5" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg>
+      </button>
+      <button onClick="{{ togglePause }}" style="width:80px;height:80px;border-radius:50%;border:none;background:{{ phaseColor }};cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 10px 26px rgba(0,0,0,0.16);">
+        <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ true }}"><svg width="32" height="32" viewBox="0 0 24 24"><rect x="6" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect><rect x="13.5" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect></svg></sc-if>
+        <sc-if value="{{ isPaused }}"><svg width="32" height="32" viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20" fill="#fff"></polygon></svg></sc-if>
+      </button>
+      <button onClick="{{ skip }}" style="width:58px;height:58px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="6,5 15,12 6,19" fill="#3A382F"></polygon><rect x="16" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg>
+      </button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isDone }}">
+    <div style="padding:0 24px 48px;">
+      <button onClick="{{ stop }}" style="width:100%;border:none;border-radius:18px;background:#3CA86B;color:#fff;padding:19px;font-size:18px;font-weight:700;font-family:'Noto Sans JP';cursor:pointer;box-shadow:0 8px 22px rgba(60,168,107,0.3);">メニューに戻る</button>
+    </div>
+    </sc-if>
+
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'setup',
+    workTime: 30, restTime: 15, prepTime: 10, sets: 1,
+    exercises: ['腕立て', '腕立て(脇締め)', 'スクワット', '片足スクワット', '片足スクワットツイスト', 'バックランジ', 'バックランジニーアップ', 'マウンテンクライマー', 'マウンテンクライマー(ツイスト)', 'バービー', 'ニーアップ'],
+    seq: [], idx: 0, secondsLeft: 0, paused: false,
+  };
+
+  componentWillUnmount() { clearInterval(this.t); }
+
+  computeSeq(s) {
+    const seq = [];
+    if (s.prepTime > 0) seq.push({ type: 'prep', label: '準備', name: 'スタート準備', duration: s.prepTime });
+    const ex = s.exercises.length ? s.exercises : ['運動'];
+    for (let set = 0; set < s.sets; set++) {
+      ex.forEach((name, i) => {
+        seq.push({ type: 'work', label: '運動', name, duration: s.workTime });
+        const last = set === s.sets - 1 && i === ex.length - 1;
+        if (!last && s.restTime > 0) {
+          const nextName = (i + 1 < ex.length) ? ex[i + 1] : ex[0];
+          seq.push({ type: 'rest', label: '休憩', name: '次：' + nextName, duration: s.restTime });
+        }
+      });
+    }
+    seq.push({ type: 'done', label: '完了', name: 'お疲れさまでした', duration: 0 });
+    return seq;
+  }
+
+  adjust(key, delta, min, max) {
+    this.setState(s => { let v = s[key] + delta; if (v < min) v = min; if (max && v > max) v = max; return { [key]: v }; });
+  }
+
+  start() {
+    this.setState(s => {
+      const seq = this.computeSeq(s);
+      return { screen: 'running', seq, idx: 0, secondsLeft: seq[0].duration, paused: false };
+    }, () => this.run());
+  }
+
+  run() {
+    clearInterval(this.t);
+    this.t = setInterval(() => {
+      this.setState(s => {
+        if (s.paused) return null;
+        if (s.secondsLeft > 1) return { secondsLeft: s.secondsLeft - 1 };
+        const ni = s.idx + 1;
+        if (ni >= s.seq.length) { clearInterval(this.t); return { secondsLeft: 0 }; }
+        const nx = s.seq[ni];
+        if (nx.type === 'done') { clearInterval(this.t); return { idx: ni, secondsLeft: 0 }; }
+        return { idx: ni, secondsLeft: nx.duration };
+      });
+    }, 1000);
+  }
+
+  togglePause() { this.setState(s => ({ paused: !s.paused })); }
+
+  skip() {
+    this.setState(s => {
+      const ni = Math.min(s.idx + 1, s.seq.length - 1);
+      const nx = s.seq[ni];
+      if (nx.type === 'done') clearInterval(this.t);
+      return { idx: ni, secondsLeft: nx.duration };
+    });
+  }
+
+  prev() {
+    this.setState(s => {
+      const pi = Math.max(s.idx - 1, 0);
+      return { idx: pi, secondsLeft: s.seq[pi].duration };
+    }, () => { if (this.state.seq[this.state.idx] && this.state.seq[this.state.idx].type !== 'done') this.run(); });
+  }
+
+  stop() { clearInterval(this.t); this.t = null; this.setState({ screen: 'setup', paused: false }); }
+
+  renderVals() {
+    const s = this.state;
+    const colors = { work: '#F2683C', rest: '#2FA8C0', prep: '#E8A53A', done: '#3CA86B' };
+    const tints = { work: '#FCF1EC', rest: '#EAF6F9', prep: '#FBF3E3', done: '#EAF7F0' };
+    const fmt = t => t >= 60 ? Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0') : String(t);
+
+    const est = this.computeSeq(s).reduce((a, p) => a + p.duration, 0);
+    const estLabel = '約 ' + Math.max(1, Math.ceil(est / 60)) + ' 分';
+
+    const exerciseRows = s.exercises.map((name, i) => ({
+      name, key: i, num: i + 1,
+      onInput: e => { const v = e.target.value; this.setState(st => { const ex = [...st.exercises]; ex[i] = v; return { exercises: ex }; }); },
+      onRemove: () => this.setState(st => ({ exercises: st.exercises.filter((_, j) => j !== i) })),
+    }));
+
+    const cur = s.seq[s.idx] || { type: 'prep', label: '準備', name: '', duration: 1 };
+    const dur = cur.duration || 1;
+    const circ = 2 * Math.PI * 140;
+    const frac = Math.max(0, Math.min(1, s.secondsLeft / dur));
+    const ringOffset = circ * (1 - frac);
+
+    const works = s.seq.filter(p => p.type === 'work').length;
+    let wi = 0;
+    for (let k = 0; k <= s.idx && k < s.seq.length; k++) { if (s.seq[k] && s.seq[k].type === 'work') wi++; }
+    const isDone = cur.type === 'done';
+
+    let nextLabel = '';
+    for (let k = s.idx + 1; k < s.seq.length; k++) {
+      if (s.seq[k].type === 'work') { nextLabel = '次：' + s.seq[k].name; break; }
+      if (s.seq[k].type === 'done') { nextLabel = 'まもなく完了'; break; }
+    }
+
+    let worksDoneSoFar = 0;
+    for (let k = 0; k < s.seq.length && k < s.idx; k++) {
+      if (s.seq[k].type === 'work') worksDoneSoFar++;
+    }
+    const exCount = s.exercises.length || 1;
+    const doneInSet = worksDoneSoFar % exCount;
+    const stepBarItems = s.exercises.map((name, i) => {
+      const shortName = name.length > 7 ? name.substring(0, 6) + '…' : name;
+      if (isDone || i < doneInSet) {
+        return { name: shortName, trackBg: '#F2683C', fillBg: '#F2683C', fillWidth: '100%', labelColor: '#F2683C', fontWeight: '700' };
+      }
+      if (i === doneInSet && cur.type === 'work') {
+        const pct = Math.round(((dur - s.secondsLeft) / dur) * 100);
+        return { name: shortName, trackBg: 'rgba(242,104,60,0.15)', fillBg: '#F2683C', fillWidth: pct + '%', labelColor: '#F2683C', fontWeight: '900' };
+      }
+      return { name: shortName, trackBg: 'rgba(0,0,0,0.06)', fillBg: 'transparent', fillWidth: '0%', labelColor: '#B6B2A9', fontWeight: '500' };
+    });
+
+    return {
+      isSetup: s.screen === 'setup', isRunning: s.screen === 'running',
+      workTime: s.workTime, restTime: s.restTime, prepTime: s.prepTime, sets: s.sets,
+      estLabel, exerciseRows,
+      decWork: () => this.adjust('workTime', -5, 5), incWork: () => this.adjust('workTime', 5, 5, 600),
+      decRest: () => this.adjust('restTime', -5, 0), incRest: () => this.adjust('restTime', 5, 0, 600),
+      decPrep: () => this.adjust('prepTime', -5, 0), incPrep: () => this.adjust('prepTime', 5, 0, 600),
+      decSets: () => this.adjust('sets', -1, 1), incSets: () => this.adjust('sets', 1, 1, 20),
+      addExercise: () => this.setState(st => ({ exercises: [...st.exercises, '新しい運動'] })),
+      start: () => this.start(),
+      phaseLabel: cur.label, phaseColor: colors[cur.type], bgTint: tints[cur.type],
+      displayTime: isDone ? '完了' : fmt(s.secondsLeft),
+      currentName: cur.name, nextLabel, stepBarItems,
+      ringCirc: circ, ringOffset, progressLabel: isDone ? '' : (wi + ' / ' + works),
+      isPaused: s.paused, isPlaying: !s.paused, isDone, notDone: !isDone,
+      togglePause: () => this.togglePause(), skip: () => this.skip(), prevStep: () => this.prev(), stop: () => this.stop(),
+    };
+  }
+}
+</script>
+</body>
+</html>

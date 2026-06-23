@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
+</style>
+</helmet>
+
+<div style="width:max-content;min-width:100%;min-height:100vh;box-sizing:border-box;padding:48px;background:#E7E5DF;">
+
+  <div style="margin-bottom:12px;font-size:14px;font-weight:700;color:#6E6A62;">「全体の中の今どこか」を見せる方法</div>
+  <div style="margin-bottom:36px;font-size:13px;color:#9C988E;">マウンテンクライマー（2/4種目め・セット1）が進行中の想定</div>
+
+  <div style="display:flex;gap:48px;align-items:flex-start;">
+
+    <!-- ============ 案1：ステップバー（下部） ============ -->
+    <div style="flex:none;width:390px;">
+      <div style="font-size:13px;font-weight:700;color:#6E6A62;letter-spacing:0.04em;margin-bottom:14px;">案1 ・ ステップバー</div>
+      <div style="font-size:12px;color:#9C988E;margin-bottom:10px;">画面下部にメニュー全体をバーで表示。完了＝色付き、現在＝アニメ、未＝グレー。</div>
+      <div style="width:390px;height:780px;background:#FCF1EC;border-radius:36px;box-shadow:0 1px 3px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;">
+        <!-- Top bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:42px 24px 0;">
+          <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" stroke="#5A574F" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+          <div style="padding:8px 18px;border-radius:999px;background:#F2683C;color:#fff;font-size:15px;font-weight:700;">運動</div>
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#8A8780;">セット 1/2</div>
+        </div>
+        <!-- Main -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;">
+          <div style="font-size:28px;font-weight:900;">マウンテンクライマー</div>
+          <div style="position:relative;width:260px;height:260px;">
+            <svg width="260" height="260" viewBox="0 0 320 320"><circle cx="160" cy="160" r="140" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="14"></circle><circle cx="160" cy="160" r="140" fill="none" stroke="#F2683C" stroke-width="14" stroke-linecap="round" stroke-dasharray="879" stroke-dashoffset="330" transform="rotate(-90 160 160)"></circle></svg>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:600;font-size:88px;color:#F2683C;letter-spacing:-2px;">18</div>
+          </div>
+          <div style="font-size:15px;font-weight:500;color:#8A8780;">次：スクワット</div>
+        </div>
+        <!-- Step bar -->
+        <div style="padding:0 24px 14px;">
+          <div style="display:flex;gap:6px;margin-bottom:10px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;">
+              <div style="width:100%;height:6px;border-radius:3px;background:#F2683C;"></div>
+              <div style="font-size:10px;font-weight:700;color:#F2683C;">バーピー</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;">
+              <div style="width:100%;height:6px;border-radius:3px;background:#F2683C;position:relative;overflow:hidden;">
+                <div style="position:absolute;inset:0;background:rgba(255,255,255,0.4);width:37%;"></div>
+              </div>
+              <div style="font-size:10px;font-weight:900;color:#F2683C;">M.クライマー</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;">
+              <div style="width:100%;height:6px;border-radius:3px;background:rgba(0,0,0,0.08);"></div>
+              <div style="font-size:10px;font-weight:500;color:#B6B2A9;">スクワット</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;">
+              <div style="width:100%;height:6px;border-radius:3px;background:rgba(0,0,0,0.08);"></div>
+              <div style="font-size:10px;font-weight:500;color:#B6B2A9;">プランク</div>
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:28px;padding:0 24px 40px;">
+          <div style="width:56px;height:56px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24"><polygon points="18,5 9,12 18,19" fill="#3A382F"></polygon><rect x="5" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg></div>
+          <div style="width:76px;height:76px;border-radius:50%;background:#F2683C;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,0.16);"><svg width="30" height="30" viewBox="0 0 24 24"><rect x="6" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect><rect x="13.5" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect></svg></div>
+          <div style="width:56px;height:56px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24"><polygon points="6,5 15,12 6,19" fill="#3A382F"></polygon><rect x="16" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 案2：サイドリスト ============ -->
+    <div style="flex:none;width:390px;">
+      <div style="font-size:13px;font-weight:700;color:#6E6A62;letter-spacing:0.04em;margin-bottom:14px;">案2 ・ リスト表示</div>
+      <div style="font-size:12px;color:#9C988E;margin-bottom:10px;">左側に全メニューを縦表示。今やってるものがアクティブ、完了は✓、未来は薄く。</div>
+      <div style="width:390px;height:780px;background:#FCF1EC;border-radius:36px;box-shadow:0 1px 3px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;">
+        <!-- Top bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:42px 24px 0;">
+          <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" stroke="#5A574F" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+          <div style="padding:8px 18px;border-radius:999px;background:#F2683C;color:#fff;font-size:15px;font-weight:700;">運動</div>
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#8A8780;">セット 1/2</div>
+        </div>
+        <!-- Main with side list -->
+        <div style="flex:1;display:flex;padding:30px 20px 20px;">
+          <!-- Exercise list -->
+          <div style="width:90px;display:flex;flex-direction:column;gap:2px;padding-top:10px;">
+            <div style="display:flex;align-items:center;gap:8px;padding:9px 0;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#F2683C;display:flex;align-items:center;justify-content:center;"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M6 12 L10 17 L18 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div>
+              <div style="font-size:11px;font-weight:500;color:#B6B2A9;text-decoration:line-through;">バーピー</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:9px 0;position:relative;">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:2px;background:#F2683C;"></div>
+              <div style="width:22px;height:22px;border-radius:50%;border:2.5px solid #F2683C;margin-left:1px;display:flex;align-items:center;justify-content:center;"><div style="width:8px;height:8px;border-radius:50%;background:#F2683C;"></div></div>
+              <div style="font-size:11px;font-weight:900;color:#F2683C;">M.クライマー</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:9px 0;">
+              <div style="width:22px;height:22px;border-radius:50%;border:2px solid #D5D1C9;margin-left:1px;"></div>
+              <div style="font-size:11px;font-weight:500;color:#B6B2A9;">スクワット</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:9px 0;">
+              <div style="width:22px;height:22px;border-radius:50%;border:2px solid #D5D1C9;margin-left:1px;"></div>
+              <div style="font-size:11px;font-weight:500;color:#B6B2A9;">プランク</div>
+            </div>
+          </div>
+          <!-- Timer -->
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+            <div style="font-size:24px;font-weight:900;text-align:center;">マウンテン<br />クライマー</div>
+            <div style="position:relative;width:220px;height:220px;">
+              <svg width="220" height="220" viewBox="0 0 320 320"><circle cx="160" cy="160" r="140" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="14"></circle><circle cx="160" cy="160" r="140" fill="none" stroke="#F2683C" stroke-width="14" stroke-linecap="round" stroke-dasharray="879" stroke-dashoffset="330" transform="rotate(-90 160 160)"></circle></svg>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:600;font-size:72px;color:#F2683C;letter-spacing:-2px;">18</div>
+            </div>
+            <div style="font-size:14px;font-weight:500;color:#8A8780;">次：スクワット</div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:28px;padding:0 24px 40px;">
+          <div style="width:56px;height:56px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24"><polygon points="18,5 9,12 18,19" fill="#3A382F"></polygon><rect x="5" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg></div>
+          <div style="width:76px;height:76px;border-radius:50%;background:#F2683C;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,0.16);"><svg width="30" height="30" viewBox="0 0 24 24"><rect x="6" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect><rect x="13.5" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect></svg></div>
+          <div style="width:56px;height:56px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24"><polygon points="6,5 15,12 6,19" fill="#3A382F"></polygon><rect x="16" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 案3：セグメントリング ============ -->
+    <div style="flex:none;width:390px;">
+      <div style="font-size:13px;font-weight:700;color:#6E6A62;letter-spacing:0.04em;margin-bottom:14px;">案3 ・ セグメントリング</div>
+      <div style="font-size:12px;color:#9C988E;margin-bottom:10px;">リング自体をメニューの数だけ分割。完了セグメント＝色付き、今＝アニメ、残り＝灰。</div>
+      <div style="width:390px;height:780px;background:#FCF1EC;border-radius:36px;box-shadow:0 1px 3px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;">
+        <!-- Top bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:42px 24px 0;">
+          <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" stroke="#5A574F" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+          <div style="padding:8px 18px;border-radius:999px;background:#F2683C;color:#fff;font-size:15px;font-weight:700;">運動</div>
+          <div style="font-family:'Space Grotesk';font-weight:600;font-size:15px;color:#8A8780;">セット 1/2</div>
+        </div>
+        <!-- Main -->
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;">
+          <div style="font-size:28px;font-weight:900;">マウンテンクライマー</div>
+          <div style="position:relative;width:280px;height:280px;">
+            <svg width="280" height="280" viewBox="0 0 320 320">
+              <!-- Segment 1: complete -->
+              <circle cx="160" cy="160" r="140" fill="none" stroke="#F2683C" stroke-width="14" stroke-linecap="round" stroke-dasharray="205 674" stroke-dashoffset="0" transform="rotate(-93 160 160)"></circle>
+              <!-- Segment 2: current (partial) -->
+              <circle cx="160" cy="160" r="140" fill="none" stroke="#F2683C" stroke-width="14" stroke-linecap="round" stroke-dasharray="127 752" stroke-dashoffset="-220" transform="rotate(-93 160 160)" opacity="0.5"></circle>
+              <circle cx="160" cy="160" r="140" fill="none" stroke="#F2683C" stroke-width="14" stroke-linecap="round" stroke-dasharray="82 797" stroke-dashoffset="-220" transform="rotate(-93 160 160)"></circle>
+              <!-- Segment 3: future -->
+              <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="14" stroke-linecap="round" stroke-dasharray="205 674" stroke-dashoffset="-440" transform="rotate(-93 160 160)"></circle>
+              <!-- Segment 4: future -->
+              <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="14" stroke-linecap="round" stroke-dasharray="200 679" stroke-dashoffset="-660" transform="rotate(-93 160 160)"></circle>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+              <div style="font-family:'Space Grotesk';font-weight:600;font-size:88px;color:#F2683C;letter-spacing:-2px;line-height:1;">18</div>
+              <div style="font-size:13px;font-weight:700;color:#9C988E;letter-spacing:0.1em;margin-top:6px;">2 / 4 種目</div>
+            </div>
+          </div>
+          <div style="font-size:15px;font-weight:500;color:#8A8780;">次：スクワット</div>
+        </div>
+        <!-- Controls -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:28px;padding:0 24px 40px;">
+          <div style="width:56px;height:56px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24"><polygon points="18,5 9,12 18,19" fill="#3A382F"></polygon><rect x="5" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg></div>
+          <div style="width:76px;height:76px;border-radius:50%;background:#F2683C;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,0.16);"><svg width="30" height="30" viewBox="0 0 24 24"><rect x="6" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect><rect x="13.5" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect></svg></div>
+          <div style="width:56px;height:56px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="22" height="22" viewBox="0 0 24 24"><polygon points="6,5 15,12 6,19" fill="#3A382F"></polygon><rect x="16" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
