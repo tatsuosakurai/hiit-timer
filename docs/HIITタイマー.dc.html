@@ -135,9 +135,9 @@
       <div style="font-size:15px;font-weight:500;color:#8A8780;text-align:center;min-height:22px;">{{ nextLabel }}</div>
     </div>
 
-    <div style="display:flex;gap:6px;padding:0 24px 16px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;padding:0 24px 16px;">
       <sc-for list="{{ stepBarItems }}" as="step" hint-placeholder-count="4">
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;">
           <div style="width:100%;height:6px;border-radius:3px;background:{{ step.trackBg }};overflow:hidden;">
             <div style="height:100%;border-radius:3px;background:{{ step.fillBg }};width:{{ step.fillWidth }};transition:width 0.3s;"></div>
           </div>
