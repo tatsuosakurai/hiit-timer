@@ -1,0 +1,8 @@
+{
+  "date": "2026-07-21",
+  "font_stack": "Noto Sans JP + Space Grotesk",
+  "palette": "warm paper + orange, cyan, amber and green phase colors",
+  "motion": "CSS transitions only; no motion library",
+  "spacing": "existing inline values, moving to a 4-point token scale",
+  "framework": "vanilla HTML with DC runtime"
+}

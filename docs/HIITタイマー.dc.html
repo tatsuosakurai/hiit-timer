@@ -2,32 +2,55 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <template id="__bundler_thumbnail">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" fill="#F2683C" rx="24"/>
-<circle cx="100" cy="92" r="48" fill="none" stroke="#fff" stroke-width="7" opacity="0.3"/>
-<circle cx="100" cy="92" r="48" fill="none" stroke="#fff" stroke-width="7" stroke-dasharray="301" stroke-dashoffset="90" transform="rotate(-90 100 92)"/>
-<text x="100" y="104" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="36" fill="#fff">18</text>
-<text x="100" y="164" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#fff" opacity="0.85">HIIT</text>
+<rect width="200" height="200" fill="var(--color-accent-3)" rx="24"/>
+<circle cx="100" cy="92" r="48" fill="none" stroke="var(--color-surface)" stroke-width="7" opacity="0.3"/>
+<circle cx="100" cy="92" r="48" fill="none" stroke="var(--color-surface)" stroke-width="7" stroke-dasharray="301" stroke-dashoffset="90" transform="rotate(-90 100 92)"/>
+<text x="100" y="104" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="36" fill="var(--color-surface)">18</text>
+<text x="100" y="164" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="var(--color-surface)" opacity="0.85">HIIT</text>
 </svg>
 </template>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="./tokens.css" rel="stylesheet" />
 <style>
+  /* Hallmark · macrostructure: Workbench · genre: playful · theme: Hum · tone: utilitarian · anchor hue: pear */
+  /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V4 */
   * { box-sizing: border-box; }
   :root { color-scheme: light; }
-  body { margin: 0; background: #E9E6DF; font-family: 'Noto Sans JP', sans-serif; -webkit-font-smoothing: antialiased; }
+  html, body { overflow-x: clip; }
+  body { margin: 0; background: var(--color-paper-2); color:var(--color-ink); font-family:var(--font-body); -webkit-font-smoothing: antialiased; }
   input { font-family: inherit; }
-  button { -webkit-tap-highlight-color: transparent; transition: transform .15s ease, filter .15s ease; }
-  button:active { transform: scale(.96); filter: brightness(.97); }
-  button:focus-visible, input:focus-visible { outline: 3px solid rgba(242,104,60,.28) !important; outline-offset: 2px; }
+  button { min-width:44px;min-height:44px;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:transform var(--dur-micro) var(--ease-out),background-color var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out); }
+  button:active { transform:translateY(2px); }
+  button:disabled { opacity:.5;cursor:not-allowed;transform:none; }
+  button:focus-visible, input:focus-visible { outline:3px solid var(--color-focus) !important;outline-offset:3px; }
+  input { min-height:44px;border:var(--rule-hairline) solid transparent;outline:2px solid transparent;outline-offset:1px; }
+  input:hover { background:var(--color-paper-2) !important; }
+  input:disabled { opacity:.55;cursor:not-allowed;background:var(--color-paper-2) !important; }
+  input[aria-invalid="true"],input[data-state="error"] { border-color:var(--color-error) !important; }
+  input[data-state="success"] { border-color:var(--color-success) !important; }
+  input[data-state="loading"] { cursor:progress; }
+  .hiit-shell { width:min(100%,430px);height:100dvh;min-height:640px;margin:0 auto;background:var(--color-paper);position:relative;overflow:hidden;color:var(--color-ink);box-shadow:0 18px 60px -28px var(--color-shadow); }
+  .hiit-head { padding:max(var(--space-xl),calc(env(safe-area-inset-top) + var(--space-lg))) var(--space-lg) var(--space-lg); }
+  .hiit-wordmark { font-family:var(--font-display);font-weight:700;font-size:var(--text-display);letter-spacing:-.04em;line-height:.95;overflow-wrap:anywhere;min-width:0; }
+  .hiit-kicker { margin-top:var(--space-sm);color:var(--color-ink-2);font-size:var(--text-sm);font-weight:600; }
+  .hiit-mark { width:48px;height:48px;border-radius:15px 15px 15px 5px;background:var(--color-accent);color:var(--color-accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;box-shadow:0 4px 0 var(--color-accent-deep);transform:rotate(2deg); }
+  .hiit-panel { background:var(--color-surface) !important;border-radius:var(--radius-card) !important;border:var(--rule-hairline) solid var(--color-rule) !important;box-shadow:0 12px 32px -18px var(--color-shadow) !important; }
+  .hiit-add { border:var(--rule-hairline) solid var(--color-accent-3) !important;background:var(--color-accent-3-soft) !important;color:var(--color-ink) !important;border-radius:var(--radius-pill) !important; }
+  .hiit-row { background:var(--color-surface) !important;border:var(--rule-hairline) solid var(--color-rule) !important;border-radius:var(--radius-input) !important;box-shadow:none !important; }
+  .hiit-start { background:var(--color-accent) !important;color:var(--color-accent-ink) !important;border-radius:var(--radius-pill) !important;box-shadow:0 5px 0 var(--color-accent-deep),0 10px 22px -10px var(--color-shadow) !important; }
+  @media (hover:hover) and (pointer:fine) { button:hover { background-color:var(--color-paper-3) !important; } .hiit-start:hover { background:var(--color-accent) !important;transform:translateY(-2px);box-shadow:0 7px 0 var(--color-accent-deep),0 14px 26px -10px var(--color-shadow) !important; } .hiit-row:hover { background:var(--color-accent-2-soft) !important; } }
+  .hiit-start:active { transform:translateY(4px);box-shadow:0 1px 0 var(--color-accent-deep),0 4px 10px -8px var(--color-shadow) !important; }
+  @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:150ms !important;animation-iteration-count:1 !important;transition-duration:150ms !important; } button:active,.hiit-start:active { transform:none; } }
   ::-webkit-scrollbar { width: 0; height: 0; }
 </style>
 <script>
@@ -72,7 +95,7 @@
   var ind = document.createElement('div');
   ind.style.cssText = 'position:fixed;top:0;left:0;right:0;display:flex;align-items:center;' +
     'justify-content:center;height:0;overflow:hidden;font:600 14px/1 -apple-system,sans-serif;' +
-    'color:#F2683C;background:#FBFBF9;z-index:99998;transition:height .18s,opacity .18s;' +
+    'color:var(--color-accent-3);background:var(--color-paper);z-index:99998;transition:height .18s,opacity .18s;' +
     'opacity:0;pointer-events:none;';
   function mountInd() { if (!ind.parentNode && document.body) document.body.appendChild(ind); }
 
@@ -120,9 +143,9 @@
     banner = document.createElement('div');
     banner.textContent = '新しいバージョンがあります — タップで更新';
     banner.style.cssText = 'position:fixed;left:12px;right:12px;top:max(12px,env(safe-area-inset-top));' +
-      'padding:12px 16px;border-radius:14px;background:#F2683C;color:#fff;' +
+      'padding:12px 16px;border-radius:14px;background:var(--color-accent-3);color:var(--color-surface);' +
       'font:700 14px/1.3 -apple-system,sans-serif;text-align:center;z-index:99999;' +
-      'box-shadow:0 6px 20px rgba(242,104,60,.35);cursor:pointer;';
+      'box-shadow:0 6px 20px var(--color-highlight-soft);cursor:pointer;';
     banner.addEventListener('click', hardReload);
     document.body.appendChild(banner);
   }
@@ -142,74 +165,74 @@
 </script>
 </helmet>
 
-<div style="width:min(100%,430px);height:100dvh;min-height:640px;margin:0 auto;background:#F8F7F3;position:relative;overflow:hidden;color:#191815;box-shadow:0 0 60px rgba(49,43,31,.10);">
+<div class="hiit-shell">
 
   <sc-if value="{{ isSetup }}" hint-placeholder-val="{{ true }}">
   <div style="height:100%;overflow-y:auto;display:flex;flex-direction:column;">
 
-    <div style="padding:max(42px,calc(env(safe-area-inset-top) + 24px)) 24px 24px;">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;">
+    <div class="hiit-head">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-md);">
         <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;letter-spacing:-1.4px;line-height:.95;">HIIT Timer</div>
-          <div style="margin-top:10px;color:#77736B;font-size:13px;font-weight:700;letter-spacing:.04em;">自分のペースで、強くなる。</div>
+          <div class="hiit-wordmark">HIIT Timer</div>
+          <div class="hiit-kicker">自分のペースで、強くなる。</div>
         </div>
-        <div style="width:48px;height:48px;border-radius:16px;background:#191815;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;box-shadow:0 8px 22px rgba(25,24,21,.18);">HIIT</div>
+        <div class="hiit-mark" aria-hidden="true">HIIT</div>
       </div>
     </div>
 
-    <div style="padding:8px 20px 0;display:flex;flex-direction:column;gap:2px;">
-      <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#918D84;padding:0 6px 11px;">タイマー設定</div>
+    <div style="padding:8px 20px 0;display:flex;flex-direction:column;gap:var(--space-3xs);">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--color-muted);padding:0 var(--space-xs) var(--space-sm);">タイマー設定</div>
 
-      <div style="background:#FFFFFF;border-radius:24px;border:1px solid rgba(25,24,21,.06);overflow:hidden;box-shadow:0 12px 35px rgba(49,43,31,.07);">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #F1EFEA;">
-          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#F2683C;"></span><span style="font-size:16px;font-weight:700;">運動時間</span></div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <button onClick="{{ decWork }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
-            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ workTime }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">秒</span></div>
-            <button onClick="{{ incWork }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+      <div class="hiit-panel" style="overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-lg);border-bottom:1px solid var(--color-rule);">
+          <div style="display:flex;align-items:center;gap:var(--space-sm);"><span style="width:10px;height:10px;border-radius:3px;background:var(--color-accent-3);"></span><span style="font-size:16px;font-weight:700;">運動時間</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-md);">
+            <button onClick="{{ decWork }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:var(--font-mono);font-weight:600;font-size:22px;">{{ workTime }}<span style="font-size:13px;color:var(--color-muted);font-family:var(--font-body);margin-inline-start:var(--space-3xs);">秒</span></div>
+            <button onClick="{{ incWork }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #F1EFEA;">
-          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#2FA8C0;"></span><span style="font-size:16px;font-weight:700;">休憩時間</span></div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <button onClick="{{ decRest }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
-            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ restTime }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">秒</span></div>
-            <button onClick="{{ incRest }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-lg);border-bottom:1px solid var(--color-rule);">
+          <div style="display:flex;align-items:center;gap:var(--space-sm);"><span style="width:10px;height:10px;border-radius:3px;background:var(--color-accent-2);"></span><span style="font-size:16px;font-weight:700;">休憩時間</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-md);">
+            <button onClick="{{ decRest }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:var(--font-mono);font-weight:600;font-size:22px;">{{ restTime }}<span style="font-size:13px;color:var(--color-muted);font-family:var(--font-body);margin-inline-start:var(--space-3xs);">秒</span></div>
+            <button onClick="{{ incRest }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #F1EFEA;">
-          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#E8A53A;"></span><span style="font-size:16px;font-weight:700;">準備時間</span></div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <button onClick="{{ decPrep }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
-            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ prepTime }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">秒</span></div>
-            <button onClick="{{ incPrep }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-lg);border-bottom:1px solid var(--color-rule);">
+          <div style="display:flex;align-items:center;gap:var(--space-sm);"><span style="width:10px;height:10px;border-radius:3px;background:var(--color-warning);"></span><span style="font-size:16px;font-weight:700;">準備時間</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-md);">
+            <button onClick="{{ decPrep }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:var(--font-mono);font-weight:600;font-size:22px;">{{ prepTime }}<span style="font-size:13px;color:var(--color-muted);font-family:var(--font-body);margin-inline-start:var(--space-3xs);">秒</span></div>
+            <button onClick="{{ incPrep }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 18px;">
-          <div style="display:flex;align-items:center;gap:12px;"><span style="width:10px;height:10px;border-radius:3px;background:#191815;"></span><span style="font-size:16px;font-weight:700;">セット数</span></div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <button onClick="{{ decSets }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
-            <div style="min-width:62px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;">{{ sets }}<span style="font-size:13px;color:#A8A49C;font-family:'Noto Sans JP';margin-left:2px;">回</span></div>
-            <button onClick="{{ incSets }}" style="width:38px;height:38px;border-radius:12px;border:none;background:#F4F2EC;color:#3A382F;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-lg);">
+          <div style="display:flex;align-items:center;gap:var(--space-sm);"><span style="width:10px;height:10px;border-radius:3px;background:var(--color-ink);"></span><span style="font-size:16px;font-weight:700;">セット数</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-md);">
+            <button onClick="{{ decSets }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">−</button>
+            <div style="min-width:62px;text-align:center;font-family:var(--font-mono);font-weight:600;font-size:22px;">{{ sets }}<span style="font-size:13px;color:var(--color-muted);font-family:var(--font-body);margin-inline-start:var(--space-3xs);">回</span></div>
+            <button onClick="{{ incSets }}" style="width:38px;height:38px;border-radius:12px;border:none;background:var(--color-paper-2);color:var(--color-ink);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">+</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div style="padding:28px 20px 0;display:flex;flex-direction:column;gap:2px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 8px 10px;">
-        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:#A8A49C;">メニュー</div>
-        <button onClick="{{ addExercise }}" style="border:none;background:#FCE9E1;color:#D95128;font-size:13px;font-weight:700;cursor:pointer;padding:8px 12px;border-radius:999px;">＋ 追加</button>
+    <div style="padding:28px 20px 0;display:flex;flex-direction:column;gap:var(--space-3xs);">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xs) var(--space-sm);">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--color-muted);">メニュー</div>
+        <button class="hiit-add" onClick="{{ addExercise }}" style="font-size:13px;font-weight:700;cursor:pointer;padding:8px 12px;">＋ 追加</button>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;flex-direction:column;gap:var(--space-xs);">
         <sc-for list="{{ exerciseRows }}" as="row" hint-placeholder-count="4">
-          <div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid rgba(25,24,21,.06);border-radius:16px;padding:7px 8px 7px 14px;box-shadow:0 4px 14px rgba(49,43,31,.035);">
-            <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;color:#C4C0B7;min-width:18px;">{{ row.num }}</span>
-            <input value="{{ row.name }}" onChange="{{ row.onInput }}" style="flex:1;border:none;outline:none;background:none;font-size:15px;font-weight:500;color:#191815;padding:8px 0;" />
-            <button onClick="{{ row.onRemove }}" style="width:34px;height:34px;border-radius:10px;border:none;background:#F8F6F1;color:#B6B2A9;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">×</button>
+          <div class="hiit-row" style="display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-xs) var(--space-xs) var(--space-xs) var(--space-md);">
+            <span style="font-family:var(--font-mono);font-weight:600;font-size:13px;color:var(--color-rule);min-width:18px;">{{ row.num }}</span>
+            <input value="{{ row.name }}" onChange="{{ row.onInput }}" style="flex:1;border:none;outline:none;background:none;font-size:15px;font-weight:500;color:var(--color-ink);padding:8px 0;" />
+            <button onClick="{{ row.onRemove }}" style="width:34px;height:34px;border-radius:10px;border:none;background:var(--color-paper);color:var(--color-muted);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;">×</button>
           </div>
         </sc-for>
       </div>
@@ -217,9 +240,9 @@
 
     <div style="height:24px;flex:1;"></div>
 
-    <div style="position:sticky;bottom:0;padding:20px 20px max(24px,env(safe-area-inset-bottom));background:linear-gradient(to top,#F8F7F3 72%,rgba(248,247,243,0));">
-      <button onClick="{{ start }}" style="width:100%;min-height:62px;border:none;border-radius:20px;background:linear-gradient(135deg,#F56E42,#EB572B);color:#fff;padding:18px;font-size:18px;font-weight:700;font-family:'Noto Sans JP';cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 12px 28px rgba(226,79,37,.32),inset 0 1px 0 rgba(255,255,255,.25);">
-        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="#fff"></polygon></svg>
+    <div style="position:sticky;bottom:0;padding:20px 20px max(24px,env(safe-area-inset-bottom));background:linear-gradient(to top,var(--color-paper) 72%,var(--color-paper-transparent));">
+      <button class="hiit-start" onClick="{{ start }}" style="width:100%;min-height:62px;border:none;padding:var(--space-lg);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:var(--space-sm);">
+        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="currentColor"></polygon></svg>
         スタート<span style="opacity:0.7;font-weight:500;font-size:14px;">・ {{ estLabel }}</span>
       </button>
     </div>
@@ -230,33 +253,33 @@
   <sc-if value="{{ isRunning }}">
   <div style="height:100%;display:flex;flex-direction:column;background:{{ bgTint }};transition:background 0.4s;">
 
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:max(42px,calc(env(safe-area-inset-top) + 20px)) 24px 0;">
-      <button onClick="{{ stop }}" style="width:40px;height:40px;border-radius:12px;border:none;background:rgba(255,255,255,0.7);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
-        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" stroke="#5A574F" stroke-width="2.4" stroke-linecap="round"></path></svg>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:max(var(--space-xl),calc(env(safe-area-inset-top) + var(--space-lg))) 24px 0;">
+      <button onClick="{{ stop }}" style="width:40px;height:40px;border-radius:12px;border:none;background:var(--color-overlay);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" stroke="var(--color-ink-2)" stroke-width="2.4" stroke-linecap="round"></path></svg>
       </button>
-      <div style="padding:8px 18px;border-radius:999px;background:{{ phaseColor }};color:#fff;font-size:15px;font-weight:700;letter-spacing:0.04em;">{{ phaseLabel }}</div>
-      <div style="min-width:40px;text-align:right;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:#8A8780;">{{ progressLabel }}</div>
+      <div style="padding:var(--space-xs) var(--space-lg);border-radius:999px;background:{{ phaseColor }};color:var(--color-surface);font-size:15px;font-weight:700;letter-spacing:0.04em;">{{ phaseLabel }}</div>
+      <div style="min-width:40px;text-align:right;font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--color-ink-2);">{{ progressLabel }}</div>
     </div>
 
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0 24px;">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-lg);padding:0 24px;">
       <div style="font-size:30px;font-weight:900;text-align:center;line-height:1.15;max-width:330px;">{{ currentName }}</div>
 
       <div style="position:relative;width:300px;height:300px;">
         <svg width="300" height="300" viewBox="0 0 320 320" style="display:block;">
-          <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="14"></circle>
+          <circle cx="160" cy="160" r="140" fill="none" stroke="var(--color-shadow-soft)" stroke-width="14"></circle>
           <circle cx="160" cy="160" r="140" fill="none" stroke="{{ phaseColor }}" stroke-width="14" stroke-linecap="round" stroke-dasharray="{{ ringCirc }}" stroke-dashoffset="{{ ringOffset }}" transform="rotate(-90 160 160)"></circle>
         </svg>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:96px;line-height:1;color:{{ phaseColor }};letter-spacing:-2px;">{{ displayTime }}</div>
+          <div style="font-family:var(--font-mono);font-weight:600;font-size:96px;line-height:1;color:{{ phaseColor }};letter-spacing:-2px;">{{ displayTime }}</div>
         </div>
       </div>
 
-      <div style="font-size:15px;font-weight:500;color:#8A8780;text-align:center;min-height:22px;">{{ nextLabel }}</div>
+      <div style="font-size:15px;font-weight:500;color:var(--color-ink-2);text-align:center;min-height:22px;">{{ nextLabel }}</div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;padding:0 24px 16px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-sm) var(--space-xs);padding:0 24px 16px;">
       <sc-for list="{{ stepBarItems }}" as="step" hint-placeholder-count="4">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);min-width:0;">
           <div style="width:100%;height:6px;border-radius:3px;background:{{ step.trackBg }};overflow:hidden;">
             <div style="height:100%;border-radius:3px;background:{{ step.fillBg }};width:{{ step.fillWidth }};transition:width 0.3s;"></div>
           </div>
@@ -266,23 +289,23 @@
     </div>
 
     <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
-    <div style="display:flex;align-items:center;justify-content:center;gap:28px;padding:0 24px 48px;">
-      <button onClick="{{ prevStep }}" style="width:58px;height:58px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
-        <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="18,5 9,12 18,19" fill="#3A382F"></polygon><rect x="5" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg>
+    <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-xl);padding:0 24px 48px;">
+      <button onClick="{{ prevStep }}" style="width:58px;height:58px;border-radius:50%;border:1px solid var(--color-rule);background:var(--color-surface);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="18,5 9,12 18,19" fill="var(--color-ink)"></polygon><rect x="5" y="5" width="3" height="14" rx="1" fill="var(--color-ink)"></rect></svg>
       </button>
-      <button onClick="{{ togglePause }}" style="width:80px;height:80px;border-radius:50%;border:none;background:{{ phaseColor }};cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 14px 32px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,.25);">
-        <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ true }}"><svg width="32" height="32" viewBox="0 0 24 24"><rect x="6" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect><rect x="13.5" y="4" width="4.5" height="16" rx="1.5" fill="#fff"></rect></svg></sc-if>
-        <sc-if value="{{ isPaused }}"><svg width="32" height="32" viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20" fill="#fff"></polygon></svg></sc-if>
+      <button onClick="{{ togglePause }}" style="width:80px;height:80px;border-radius:50%;border:none;background:{{ phaseColor }};cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 14px 32px var(--color-shadow),inset 0 1px 0 var(--color-overlay);">
+        <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ true }}"><svg width="32" height="32" viewBox="0 0 24 24"><rect x="6" y="4" width="4.5" height="16" rx="1.5" fill="var(--color-surface)"></rect><rect x="13.5" y="4" width="4.5" height="16" rx="1.5" fill="var(--color-surface)"></rect></svg></sc-if>
+        <sc-if value="{{ isPaused }}"><svg width="32" height="32" viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20" fill="var(--color-surface)"></polygon></svg></sc-if>
       </button>
-      <button onClick="{{ skip }}" style="width:58px;height:58px;border-radius:50%;border:1px solid #EAE7E0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
-        <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="6,5 15,12 6,19" fill="#3A382F"></polygon><rect x="16" y="5" width="3" height="14" rx="1" fill="#3A382F"></rect></svg>
+      <button onClick="{{ skip }}" style="width:58px;height:58px;border-radius:50%;border:1px solid var(--color-rule);background:var(--color-surface);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="6,5 15,12 6,19" fill="var(--color-ink)"></polygon><rect x="16" y="5" width="3" height="14" rx="1" fill="var(--color-ink)"></rect></svg>
       </button>
     </div>
     </sc-if>
 
     <sc-if value="{{ isDone }}">
     <div style="padding:0 24px 48px;">
-      <button onClick="{{ stop }}" style="width:100%;border:none;border-radius:18px;background:#3CA86B;color:#fff;padding:19px;font-size:18px;font-weight:700;font-family:'Noto Sans JP';cursor:pointer;box-shadow:0 8px 22px rgba(60,168,107,0.3);">メニューに戻る</button>
+      <button onClick="{{ stop }}" style="width:100%;border:none;border-radius:18px;background:var(--color-success);color:var(--color-surface);padding:var(--space-lg);font-size:18px;font-weight:700;font-family:var(--font-body);cursor:pointer;box-shadow:0 8px 22px var(--color-success-tint);">メニューに戻る</button>
     </div>
     </sc-if>
 
@@ -368,8 +391,8 @@ class Component extends DCLogic {
 
   renderVals() {
     const s = this.state;
-    const colors = { work: '#F2683C', rest: '#2FA8C0', prep: '#E8A53A', done: '#3CA86B' };
-    const tints = { work: '#FCF1EC', rest: '#EAF6F9', prep: '#FBF3E3', done: '#EAF7F0' };
+    const colors = { work: 'var(--color-accent-3)', rest: 'var(--color-accent-2)', prep: 'var(--color-warning)', done: 'var(--color-success)' };
+    const tints = { work: 'var(--color-work-tint)', rest: 'var(--color-rest-tint)', prep: 'var(--color-prep-tint)', done: 'var(--color-success-tint)' };
     const fmt = t => t >= 60 ? Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0') : String(t);
 
     const est = this.computeSeq(s).reduce((a, p) => a + p.duration, 0);
@@ -407,13 +430,13 @@ class Component extends DCLogic {
     const stepBarItems = s.exercises.map((name, i) => {
       const shortName = name.length > 7 ? name.substring(0, 6) + '…' : name;
       if (isDone || i < doneInSet) {
-        return { name: shortName, trackBg: '#F2683C', fillBg: '#F2683C', fillWidth: '100%', labelColor: '#F2683C', fontWeight: '700' };
+        return { name: shortName, trackBg: 'var(--color-accent-3)', fillBg: 'var(--color-accent-3)', fillWidth: '100%', labelColor: 'var(--color-accent-3)', fontWeight: '700' };
       }
       if (i === doneInSet && cur.type === 'work') {
         const pct = Math.round(((dur - s.secondsLeft) / dur) * 100);
-        return { name: shortName, trackBg: 'rgba(242,104,60,0.15)', fillBg: '#F2683C', fillWidth: pct + '%', labelColor: '#F2683C', fontWeight: '900' };
+        return { name: shortName, trackBg: 'var(--color-highlight-soft)', fillBg: 'var(--color-accent-3)', fillWidth: pct + '%', labelColor: 'var(--color-accent-3)', fontWeight: '900' };
       }
-      return { name: shortName, trackBg: 'rgba(0,0,0,0.06)', fillBg: 'transparent', fillWidth: '0%', labelColor: '#B6B2A9', fontWeight: '500' };
+      return { name: shortName, trackBg: 'var(--color-shadow-soft)', fillBg: 'transparent', fillWidth: '0%', labelColor: 'var(--color-muted)', fontWeight: '500' };
     });
 
     return {
